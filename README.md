@@ -1,4 +1,3 @@
-// Duy đẹp trai, rất tuyệt vời
 <h1>FILM WEBSITE</h1>
 <h2>1. Các bước chạy và cài đặt Docker trên hệ điều hành Ubuntu</h2>
 <h3>Bước 1: Cập nhật hệ thống</h3>
@@ -92,29 +91,68 @@ Build Docker image
 
 <h2>3. Cài đặt và triển khai CI/CD sử dụng jenkin và docker</h2>
 
-– Bước 1: [Manual] Khởi tạo repository và có branch default là main và dev. Cài đặt trên Gitlab 9.
-– Bước 2: [Manual] Trừ owner(Nguyễn Việt Hòa) ra, thì các coder sẽ push code tính năng lên branch dev.
-– Bước 3: [Auto] Hệ thống tự động thực hiện test source code, nếu PASS thì sẽ deploy tự động (rsync) code lên server beta.
-– Bước 4: [Manual] Tester sẽ vào hệ thống beta để làm UAT (User Acceptance Testing) và confirm là mọi thứ OK.
-– Bước 5: [Manual] Coder hoặc owner sẽ vào tạo Merge Request, và merge từ branch dev sang branch master.
-– Bước 6: [Manual] Owner sẽ accept merge request.
-– Bước 7: [Auto] Hệ thống sẽ tự động thực hiện test source code, nếu PASS sẽ enable tính năng cho phép deploy lên production server.
-– Bước 8: [Manual] Owner review là merge request OK, test OK. Tiến hành nhấn nút để deploy các thay đổi lên môi trường production.
-– Bước 9: [Manual] Tester sẽ vào hệ thống production để làm UAT và confirm mọi thứ OK. Nếu không OK, Owner có thể nhấn nút Deploy phiên bản master trước đó để rollback hệ thống về trạng thái stable trước đó.
+<li>– Bước 1: [Manual] Khởi tạo repository và có branch default là main và dev. Cài đặt trên Gitlab 9.</li>
+<li>– Bước 2: [Manual] Trừ owner(Nguyễn Việt Hòa) ra, thì các coder sẽ push code tính năng lên branch dev.</li>>
+<li>– Bước 3: [Auto] Hệ thống tự động thực hiện test source code, nếu PASS thì sẽ deploy tự động (rsync) code lên server beta.</li>>
+<li>– Bước 4: [Manual] Tester sẽ vào hệ thống beta để làm UAT (User Acceptance Testing) và confirm là mọi thứ OK.</li>
+<li?>– Bước 5: [Manual] Coder hoặc owner sẽ vào tạo Merge Request, và merge từ branch dev sang branch master.</li>
+<li>– Bước 6: [Manual] Owner sẽ accept merge request.</li>>
+<li?>– Bước 7: [Auto] Hệ thống sẽ tự động thực hiện test source code, nếu PASS sẽ enable tính năng cho phép deploy lên production server.</li>
+<li>– Bước 8: [Manual] Owner review là merge request OK, test OK. Tiến hành nhấn nút để deploy các thay đổi lên môi trường production.</li>
+<li>– Bước 9: [Manual] Tester sẽ vào hệ thống production để làm UAT và confirm mọi thứ OK. Nếu không OK, Owner có thể nhấn nút Deploy phiên bản master trước đó để rollback hệ thống về trạng thái stable trước đó.</li>
 
-Chạy câu lệnh sau để tạo một container chứa Gitlab 9.
+<h2>4. Cài đặt Github Actions để tự động hoá việc kiểm thử</h2>
+Để sử dụng GitHub Actions để tự động hóa việc kiểm thử (automation testing) trong dự án , ta tuân theo các bước sau:
+
+<ul>Bước 1: Tạo file cấu hình cho GitHub Actions
+
+    <li>Trong thư mục gốc của dự án, tạo một thư mục mới có tên .github/workflows.</li>
+    <li>Trong thư mục .github/workflows, tạo một file YAML mới với tên tùy ý (ví dụ: automation-test.yml).</li>
+</ul>
+
+<ul>Bước 2: Cấu hình các bước của GitHub Actions
+    <li>Mở file YAML đã tạo ở Bước 1 và sử dụng cú pháp YAML để cấu hình các bước của quy trình (workflow).</li>
+    <li>Có thể bắt đầu bằng việc định nghĩa tên của quy trình và sự kiện kích hoạt (trigger event). Ví dụ:</li>
+
 <pre>
-docker run --detach \
---hostname code.teamcrop.com \
---publish 8080:80 --publish 2222:22 \
---name gitlab9 \
---restart=always \
---volume /gitlab9/config:/etc/gitlab \
---volume /gitlab9/logs:/var/log/gitlab \
---volume /gitlab9/data:/var/opt/gitlab \
-gitlab/gitlab-ce:9.0.3-ce.0
+name: Automation Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+Tiếp theo, có thể định nghĩa các bước (steps) trong quy trình. Ví dụ:
+yaml
+Copy code
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run automation tests
+        run: npm test
 </pre>
+</ul>
 
-Sử dụng image gitlab/gitlab-ce:9.0.3-ce.0. Có mount ra 3 thư mục bên ngoài máy ở thục mục /gitlab9 để lỡ có chuyện gì chỉ cần stop, remove container, khi chạy docker run lại thì không bị mất dữ liệu, source code. Câu lệnh trên có map 2 port là 8080 và 2222 tương ứng tới 2 port 80 và 22 trong container. Mapping port vậy bởi vì trên server dev này có rất nhiều service khác và đã chiếm port 80 và 22
+<ul>Bước 3: Commit và đẩy cấu hình lên GitHub
+        <li>Lưu file YAML đã tạo.</li>
+        <li>Sử dụng Git để commit và đẩy cấu hình lên repository trên GitHub.</li>
+</ul>
 
-Sau khi start container thì có thể truy cập vào từ ip hoặc domain (mà đã trỏ DNS), ví dụ: http://code.teamcrop.com:8080 là có thể vào gitlab 9, tài khoản mặc định là `root`.
+<ul>Bước 4: Xem kết quả
+        <li>Khi cấu hình được đẩy lên GitHub, GitHub Actions sẽ tự động bắt đầu quy trình (workflow) dựa trên sự kiện kích hoạt đã định nghĩa.</li>
+        <li>Kết quả của các bước trong quy trình sẽ được hiển thị trong tab "Actions" trên trang repository .</li>
+</ul>
