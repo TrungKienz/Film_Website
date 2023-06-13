@@ -92,8 +92,8 @@ Build Docker image
 <h2>3. Cài đặt và triển khai CI/CD sử dụng jenkin và docker</h2>
 
 <li>– Bước 1: [Manual] Khởi tạo repository và có branch default là main và dev. Cài đặt trên Gitlab 9.</li>
-<li>– Bước 2: [Manual] Trừ owner(Nguyễn Việt Hòa) ra, thì các coder sẽ push code tính năng lên branch dev.</li>>
-<li>– Bước 3: [Auto] Hệ thống tự động thực hiện test source code, nếu PASS thì sẽ deploy tự động (rsync) code lên server beta.</li>>
+<li>– Bước 2: [Manual] Trừ owner(Nguyễn Việt Hòa) ra, thì các coder sẽ push code tính năng lên branch dev.</li>
+<li>– Bước 3: [Auto] Hệ thống tự động thực hiện test source code, nếu PASS thì sẽ deploy tự động (rsync) code lên server beta.</li>
 <li>– Bước 4: [Manual] Tester sẽ vào hệ thống beta để làm UAT (User Acceptance Testing) và confirm là mọi thứ OK.</li>
 <li?>– Bước 5: [Manual] Coder hoặc owner sẽ vào tạo Merge Request, và merge từ branch dev sang branch master.</li>
 <li>– Bước 6: [Manual] Owner sẽ accept merge request.</li>>
@@ -105,7 +105,6 @@ Build Docker image
 Để sử dụng GitHub Actions để tự động hóa việc kiểm thử (automation testing) trong dự án , ta tuân theo các bước sau:
 
 <ul>Bước 1: Tạo file cấu hình cho GitHub Actions
-
     <li>Trong thư mục gốc của dự án, tạo một thư mục mới có tên .github/workflows.</li>
     <li>Trong thư mục .github/workflows, tạo một file YAML mới với tên tùy ý (ví dụ: automation-test.yml).</li>
 </ul>
@@ -115,35 +114,37 @@ Build Docker image
     <li>Có thể bắt đầu bằng việc định nghĩa tên của quy trình và sự kiện kích hoạt (trigger event). Ví dụ:</li>
 
 <pre>
-name: Automation Test
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-Tiếp theo, có thể định nghĩa các bước (steps) trong quy trình. Ví dụ:
-yaml
-Copy code
-jobs:
-  build:
-    runs-on: ubuntu-latest
+stages:          # List of stages for jobs, and their order of execution
+  - build
+  - test
+  - deploy
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+build-job:       # This job runs in the build stage, which runs first.
+  stage: build
+  script:
+    - echo "Compiling the code..."
+    - echo "Compile complete."
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+unit-test-job:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
+  script:
+    - echo "Running unit tests... This will take about 60 seconds."
+    - sleep 60
+    - echo "Code coverage is 90%"
 
-      - name: Install dependencies
-        run: npm ci
+lint-test-job:   # This job also runs in the test stage.
+  stage: test    # It can run at the same time as unit-test-job (in parallel).
+  script:
+    - echo "Linting code... This will take about 10 seconds."
+    - sleep 10
+    - echo "No lint issues found."
 
-      - name: Run automation tests
-        run: npm test
+deploy-job:      # This job runs in the deploy stage.
+  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+  environment: production
+  script:
+    - echo "Deploying application..."
+    - echo "Application successfully deployed."
 </pre>
 </ul>
 
