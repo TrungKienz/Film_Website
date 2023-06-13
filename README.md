@@ -87,7 +87,6 @@ Build Docker image
 2. Nguyễn Việt Hòa (owner and coder)
 3. Vũ Đức Duy (coder)
 4. Bùi Trung Kiên (coder and leader)
-5. Trần Văn Tài (player)
 
 <h2>3. Cài đặt và triển khai CI/CD sử dụng jenkin và docker</h2>
 
