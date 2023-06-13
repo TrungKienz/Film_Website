@@ -96,7 +96,7 @@ Build Docker image
 <li>– Bước 3: [Auto] Hệ thống tự động thực hiện test source code, nếu PASS thì sẽ deploy tự động (rsync) code lên server beta.</li>
 <li>– Bước 4: [Manual] Tester sẽ vào hệ thống beta để làm UAT (User Acceptance Testing) và confirm là mọi thứ OK.</li>
 <li?>– Bước 5: [Manual] Coder hoặc owner sẽ vào tạo Merge Request, và merge từ branch dev sang branch master.</li>
-<li>– Bước 6: [Manual] Owner sẽ accept merge request.</li>>
+<li>– Bước 6: [Manual] Owner sẽ accept merge request.</li>
 <li?>– Bước 7: [Auto] Hệ thống sẽ tự động thực hiện test source code, nếu PASS sẽ enable tính năng cho phép deploy lên production server.</li>
 <li>– Bước 8: [Manual] Owner review là merge request OK, test OK. Tiến hành nhấn nút để deploy các thay đổi lên môi trường production.</li>
 <li>– Bước 9: [Manual] Tester sẽ vào hệ thống production để làm UAT và confirm mọi thứ OK. Nếu không OK, Owner có thể nhấn nút Deploy phiên bản master trước đó để rollback hệ thống về trạng thái stable trước đó.</li>
