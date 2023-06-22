@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-Client_Web/node_modules/
+/node_modules/
 /.pnp
 .pnp.js
 
@@ -9,7 +9,7 @@ Client_Web/node_modules/
 /coverage
 
 # next.js
-Client_Web/.next/
+/.next/
 /out/
 
 # production
@@ -26,8 +26,8 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-Client_Web/.env*.local
-Client_Web/.env
+/.env*.local
+/.env
 
 # vercel
 .vercel
