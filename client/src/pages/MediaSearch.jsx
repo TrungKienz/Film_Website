@@ -8,7 +8,7 @@ import uiConfigs from "../configs/ui.configs";
 
 const mediaTypes = ["movie", "tv", "people"];
 let timer;
-const timeout = 500;
+const timeout = 450;
 
 const MediaSearch = () => {
   const [query, setQuery] = useState("");
