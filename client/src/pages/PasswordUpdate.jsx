@@ -26,16 +26,16 @@ const PasswordUpdate = () => {
     },
     validationSchema: Yup.object({
       password: Yup.string()
-        .min(8, "password minimum 8 characters")
-        .required("password is required"),
+        .min(8, "password minimum 8 characters") // Yeu cau password >= 8 ki tu
+        .required("password is required"), // Yeu cau nhap password
       newPassword: Yup.string()
-        .min(8, "newPassword minimum 8 characters")
-        .required("newPassword is required"),
+        .min(8, "newPassword minimum 8 characters") // Yeu cau password >= 8 ki tu
+        .required("newPassword is required"), // Yeu cau nhap password
       confirmNewPassword: Yup.string()
-        .oneOf([Yup.ref("newPassword")], "confirmNewPassword not match")
-        .min(8, "confirmNewPassword minimum 8 characters")
+        .oneOf([Yup.ref("newPassword")], "confirmNewPassword not match") // Password khong chinh xac
+        .min(8, "confirmNewPassword minimum 8 characters") // Yeu cau password >= 8 ki tu 
         .required("confirmNewPassword is required")
-    }),
+    }), // Tao password moi
     onSubmit: async values => onUpdate(values)
   });
 
@@ -53,7 +53,7 @@ const PasswordUpdate = () => {
       navigate("/");
       dispatch(setUser(null));
       dispatch(setAuthModalOpen(true));
-      toast.success("Update password success! Please re-login");
+      toast.success("Update password success! Please re-login"); // Thong bao cap nhat password thanh cong
     }
   };
 
@@ -109,7 +109,7 @@ const PasswordUpdate = () => {
         </Box>
       </Container>
     </Box>
-  );
+  );// button cap nhat password
 };
 
 export default PasswordUpdate;
