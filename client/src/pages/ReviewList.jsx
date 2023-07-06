@@ -30,17 +30,17 @@ const ReviewItem = ({ review, onRemoved }) => {
   };// Xoa review
 
 
-  const onUpdate = async () => {
-    if (onRequest) return;
-    setOnRequest(true);
-    const { response, err } = await reviewApi.remove({ reviewId: review.id });
-    setOnRequest(false);
+  // const onUpdate = async () => {
+  //   if (onRequest) return;
+  //   setOnRequest(true);
+  //   const { response, err } = await reviewApi.remove({ reviewId: review.id });
+  //   setOnRequest(false);
 
     if (err) toast.error(err.message);
     if (response) {
       toast.success("Remove review success");
       onRemoved(review.id);
-    }
+    }//Gui response Xoa thanh cong
   };
 
   return (
