@@ -21,7 +21,7 @@ const PersonDetail = () => {
       const { response, err } = await personApi.detail({ personId });
       dispatch(setGlobalLoading(false));
 
-      if (err) toast.error(err.message);
+      if (err) toast.error(err.message); // Gui error message
       if (response) setPerson(response);
     };
 

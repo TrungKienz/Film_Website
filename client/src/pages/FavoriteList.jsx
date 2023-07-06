@@ -78,6 +78,11 @@ const FavoriteList = () => {
     setPage(page + 1);
   };
 
+  const onLoad = () => {
+    setFilteredMedias([...filteredMedias, ...[...medias].splice(page * skip, skip)]);
+    setPage(page + 1);
+  };
+
   const onRemoved = (id) => {
     const newMedias = [...medias].filter(e => e.id !== id);
     setMedias(newMedias);
