@@ -66,7 +66,7 @@ const PersonDetail = () => {
                 </Stack>
               </Box>
             </Box>
-            <Container header="medias">
+            <Container header="Phim liên quan">
               <PersonMediaGrid personId={personId} />
             </Container>
           </Box>

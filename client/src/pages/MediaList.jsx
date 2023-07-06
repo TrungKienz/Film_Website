@@ -25,7 +25,7 @@ const MediaList = () => {
   const dispatch = useDispatch();
 
   const mediaCategories = useMemo(() => ["popular", "top_rated"], []);
-  const category = ["popular", "top rated"];
+  const category = ["Phổ biến", "Đánh giá cao"];
 
   useEffect(() => {
     dispatch(setAppState(mediaType));
@@ -89,7 +89,7 @@ const MediaList = () => {
           sx={{ marginBottom: 4 }}
         >
           <Typography fontWeight="700" variant="h5">
-            {mediaType === tmdbConfigs.mediaType.movie ? "Movies" : "TV Series"}
+            {mediaType === tmdbConfigs.mediaType.movie ? "Phim lẻ" : "Phim bộ"}
           </Typography>
           <Stack direction="row" spacing={2}>
             {category.map((cate, index) => (
@@ -118,7 +118,7 @@ const MediaList = () => {
           loading={mediaLoading}
           onClick={onLoadMore}
         >
-          load more
+          Tải thêm
         </LoadingButton>
       </Box>
     </>
