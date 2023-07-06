@@ -24,17 +24,17 @@ const routes = [
     index: true,
     element: <HomePage />,
     state: "home"
-  },
+  },//Trang chu
   {
     path: "/person/:personId",
     element: <PersonDetail />,
     state: "person.detail"
-  },
+  },//Trang ca nhan
   {
     path: "/search",
     element: <MediaSearch />,
     state: "search"
-  },
+  },//Tim kiem
   {
     path: "/password-update",
     element: (
@@ -43,7 +43,7 @@ const routes = [
       </ProtectedPage>
     ),
     state: "password.update"
-  },
+  },//Cap nhat password
   {
     path: "/favorites",
     element: (
@@ -52,7 +52,7 @@ const routes = [
       </ProtectedPage>
     ),
     state: "favorites"
-  },
+  },//Danh sach yeu thich
   {
     path: "/reviews",
     element: (
@@ -61,15 +61,15 @@ const routes = [
       </ProtectedPage>
     ),
     state: "reviews"
-  },
+  },//review
   {
     path: "/:mediaType",
     element: <MediaList />
-  },
+  },//Type
   {
     path: "/:mediaType/:mediaId",
     element: <MediaDetail />
-  }
+  }//Detail
 ];
 
 export default routes;
