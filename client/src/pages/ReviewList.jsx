@@ -24,6 +24,20 @@ const ReviewItem = ({ review, onRemoved }) => {
 
     if (err) toast.error(err.message);
     if (response) {
+      toast.success("Remove review success"); //Hien thi review thanh cong
+      onRemoved(review.id);
+    }
+  };// Xoa review
+
+
+  const onUpdate = async () => {
+    if (onRequest) return;
+    setOnRequest(true);
+    const { response, err } = await reviewApi.remove({ reviewId: review.id });
+    setOnRequest(false);
+
+    if (err) toast.error(err.message);
+    if (response) {
       toast.success("Remove review success");
       onRemoved(review.id);
     }
