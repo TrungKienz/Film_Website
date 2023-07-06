@@ -24,7 +24,7 @@ const HomePage = () => {
           <MediaSlide mediaType={tmdbConfigs.mediaType.movie} mediaCategory={tmdbConfigs.mediaCategory.top_rated} />
         </Container>
 
-        <Container header="Phim bộ Top rate">
+        <Container header="Phim bộ top rate">
           <MediaSlide mediaType={tmdbConfigs.mediaType.tv} mediaCategory={tmdbConfigs.mediaCategory.top_rated} />
         </Container>
       </Box>
