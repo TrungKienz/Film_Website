@@ -6,10 +6,10 @@ import uiConfigs from "../configs/ui.configs";
 import Container from "../components/common/Container";
 import MediaSlide from "../components/common/MediaSlide";
 
-const onList = () => {
-  setFilteredMedias([...filteredMedias, ...[...medias].splice(page * skip, skip)]);
-  setPage(page + 1);
-};
+// const onList = () => {
+//   setFilteredMedias([...filteredMedias, ...[...medias].splice(page * skip, skip)]);
+//   setPage(page + 1);
+// };
 
 const HomePage = () => {
   return (
