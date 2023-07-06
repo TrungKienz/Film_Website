@@ -37,4 +37,13 @@ const mediaApi = {
   }
 };
 
+// search: async ({ mediaType, query, page }) => {
+//   try {
+//     const response = await publicClient.get(mediaEndpoints.search({ mediaType, query, page }));
+//     return { response };
+//   } catch (err) {
+//     return { err };
+//   }
+// }
+
 export default mediaApi;

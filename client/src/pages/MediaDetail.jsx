@@ -73,6 +73,25 @@ const MediaDetail = () => {
       return;
     }
 
+    // const onFavoriteClick = async () => {
+    //   if (!user) {
+    //     dispatch(setAuthModalOpen(true));
+    //     return;
+    //   }
+    
+    //   if (onRequest) {
+    //     return;
+    //   }
+    
+    //   if (isFavorite) {
+    //     await onRemoveFavorite();
+    //   } else {
+    //     // Perform the logic for adding the item to favorites here
+    //     await onAddFavorite();
+    //   }
+    // }; sử dụng async await
+    
+
     setOnRequest(true);
 
     const body = {
