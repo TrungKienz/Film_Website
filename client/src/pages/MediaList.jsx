@@ -25,7 +25,7 @@ const MediaList = () => {
   const dispatch = useDispatch();
 
   const mediaCategories = useMemo(() => ["popular", "top_rated"], []);
-  const category = ["popular", "top rated"];
+  const category = ["popular", "top rated"];// Khai bao du lieu
 
   useEffect(() => {
     dispatch(setAppState(mediaType));
@@ -119,10 +119,10 @@ const MediaList = () => {
           onClick={onLoadMore}
         >
           load more
-        </LoadingButton>
+        </LoadingButton> 
       </Box>
     </>
-  );
+  );//Nut LoadMore
 };
 
 export default MediaList;
