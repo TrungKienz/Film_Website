@@ -60,7 +60,7 @@ const SignupForm = ({ switchAuthState }) => {
       <Stack spacing={3}>
         <TextField
           type="text"
-          placeholder="username"
+          placeholder="tài khoản"
           name="username"
           fullWidth
           value={signinForm.values.username}
@@ -71,7 +71,7 @@ const SignupForm = ({ switchAuthState }) => {
         />
         <TextField
           type="text"
-          placeholder="display name"
+          placeholder="Tên hiển thị"
           name="displayName"
           fullWidth
           value={signinForm.values.displayName}
@@ -82,7 +82,7 @@ const SignupForm = ({ switchAuthState }) => {
         />
         <TextField
           type="password"
-          placeholder="password"
+          placeholder="mật khẩu"
           name="password"
           fullWidth
           value={signinForm.values.password}
@@ -93,11 +93,11 @@ const SignupForm = ({ switchAuthState }) => {
         />
         <TextField
           type="password"
-          placeholder="confirm password"
+          placeholder="nhập lại mật khẩu"
           name="confirmPassword"
           fullWidth
           value={signinForm.values.confirmPassword}
-          onChange={signinForm.handleChange}
+          onChange={signinForm.handleChange}khẩu
           color="success"
           error={signinForm.touched.confirmPassword && signinForm.errors.confirmPassword !== undefined}
           helperText={signinForm.touched.confirmPassword && signinForm.errors.confirmPassword}
@@ -112,7 +112,7 @@ const SignupForm = ({ switchAuthState }) => {
         sx={{ marginTop: 4 }}
         loading={isLoginRequest}
       >
-        sign up
+        đăng ký
       </LoadingButton>
 
       <Button
@@ -120,7 +120,7 @@ const SignupForm = ({ switchAuthState }) => {
         sx={{ marginTop: 1 }}
         onClick={() => switchAuthState()}
       >
-        sign in
+        đăng nhập
       </Button>
 
       {errorMessage && (

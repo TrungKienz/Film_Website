@@ -6,7 +6,7 @@ import mediaApi from "../api/modules/media.api";
 import MediaGrid from "../components/common/MediaGrid";
 import uiConfigs from "../configs/ui.configs";
 
-const mediaTypes = ["movie", "tv", "people"];
+const mediaTypes = ["Phim lẻ", "Phim bộ", "Diễn viên"];
 let timer;
 const timeout = 500;
 
@@ -88,7 +88,7 @@ const MediaSearch = () => {
           </Stack>
           <TextField
             color="success"
-            placeholder="Search MoonFlix"
+            placeholder="Nhập từ khóa để tìm kiếm"
             sx={{ width: "100%" }}
             autoFocus
             onChange={onQueryChange}

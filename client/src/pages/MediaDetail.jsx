@@ -232,7 +232,7 @@ const MediaDetail = () => {
                   {/* buttons */}
 
                   {/* cast */}
-                  <Container header="Cast">
+                  <Container header="Diễn viên">
                     <CastSlide casts={media.credits.cast} />
                   </Container>
                   {/* cast */}
@@ -272,7 +272,7 @@ const MediaDetail = () => {
           {/* media reviews */}
 
           {/* media recommendation */}
-          <Container header="you may also like">
+          <Container header="Bạn có thể thích">
             {media.recommend.length > 0 && (
               <RecommendSlide medias={media.recommend} mediaType={mediaType} />
             )}
