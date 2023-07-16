@@ -149,7 +149,7 @@ const ReviewList = () => {
 
   return (
     <Box sx={{ ...uiConfigs.style.mainContent }}>
-      <Container header={`Your reviews (${count})`}>
+      <Container header={`Bình luận của bạn (${count})`}>
         <Stack spacing={2}>
           {filteredReviews.map((item) => (
             <Box key={item.id}>
@@ -160,7 +160,7 @@ const ReviewList = () => {
             </Box>
           ))}
           {filteredReviews.length < reviews.length && (
-            <Button onClick={onLoadMore}>load more</Button>
+            <Button onClick={onLoadMore}>tải thêm</Button>
           )}
         </Stack>
       </Container>

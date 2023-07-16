@@ -136,7 +136,7 @@ const MediaReview = ({ reviews, media, mediaType }) => {
 
   return (
     <>
-      <Container header={`Reviews (${reviewCount})`}>
+      <Container header={`Bình luận (${reviewCount})`}>
         <Stack spacing={4} marginBottom={2}>
           {filteredReviews.map((item) => (
             item.user ? <Box key={item.id}>
@@ -147,7 +147,7 @@ const MediaReview = ({ reviews, media, mediaType }) => {
             </Box> : null
           ))}
           {filteredReviews.length < listReviews.length && (
-            <Button onClick={onLoadMore}>load more</Button>
+            <Button onClick={onLoadMore}>Tải thêm</Button>
           )}
         </Stack>
         {user && (

@@ -73,6 +73,25 @@ const MediaDetail = () => {
       return;
     }
 
+    // const onFavoriteClick = async () => {
+    //   if (!user) {
+    //     dispatch(setAuthModalOpen(true));
+    //     return;
+    //   }
+    
+    //   if (onRequest) {
+    //     return;
+    //   }
+    
+    //   if (isFavorite) {
+    //     await onRemoveFavorite();
+    //   } else {
+    //     // Perform the logic for adding the item to favorites here
+    //     await onAddFavorite();
+    //   }
+    // }; sử dụng async await
+    
+
     setOnRequest(true);
 
     const body = {
@@ -213,7 +232,7 @@ const MediaDetail = () => {
                   {/* buttons */}
 
                   {/* cast */}
-                  <Container header="Cast">
+                  <Container header="Diễn viên">
                     <CastSlide casts={media.credits.cast} />
                   </Container>
                   {/* cast */}
@@ -253,7 +272,7 @@ const MediaDetail = () => {
           {/* media reviews */}
 
           {/* media recommendation */}
-          <Container header="you may also like">
+          <Container header="Bạn có thể thích">
             {media.recommend.length > 0 && (
               <RecommendSlide medias={media.recommend} mediaType={mediaType} />
             )}
